@@ -1,0 +1,33 @@
+---
+title: "trabajo final"
+format: html
+editor: visual
+---
+
+```{r}
+library(dplyr)
+library(readr)
+```
+
+```{r}
+data_raw <- read_delim("Examen_Saber_11_20242.txt", delim = ";", escape_double = FALSE, trim_ws = TRUE)
+```
+
+```{r}
+names(data_raw)
+```
+
+```{r}
+# Variables seleccionadas relevantes para el análisis
+seleccionadas = c("estu_estudiante", "cole_area_ubicacion", "cole_bilingue", "cole_caracter", "cole_cod_depto_ubicacion", "cole_jornada", "cole_naturaleza", "estu_dedicacioninternet", "estu_dedicacionlecturadiaria", "estu_discapacidad", "estu_fechanacimiento", "estu_genero", "estu_horassemanatrabaja", "estu_nse_individual", "estu_repite", "estu_tieneetnia", "fami_educacionmadre", "fami_educacionpadre", "fami_estratovivienda", "fami_tienecomputador","fami_tieneinternet", "fami_tieneserviciotv", "fami_trabajolabormadre",     "fami_trabajolaborpadre", "punt_c_naturales", "punt_ingles", "punt_lectura_critica", "punt_matematicas", "punt_sociales_ciudadanas", "punt_global")
+
+data_subset = select(data_raw, seleccionadas)
+write.table(data_subset, "data_subset.txt", sep = ';', row.names = FALSE)
+```
+
+```{r}
+# data_subset = read_delim("data_subset.txt", delim = ";")
+# Completitud de los datos
+# print(colSums(is.na(data_subset)))
+
+```
